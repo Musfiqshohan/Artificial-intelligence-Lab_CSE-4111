@@ -1,0 +1,23 @@
+1. Follow the tutorial 
+2. install the environment
+Followed this link and installation ok:
+https://www.digitalocean.com/community/tutorials/how-to-install-the-anaconda-python-distribution-on-ubuntu-16-04
+
+activate conda: 
+source /home/musfiq/anaconda3/etc/profile.d/conda.sh
+conda activate AILAB1
+
+python pacman.py -l tinyMaze -p SearchAgent -a fn=tinyMazeSearch
+python pacman.py -l mediumMaze -p SearchAgent -a fn=tinyMazeSearch
+python pacman.py -l bigMaze -z .5 -p SearchAgent -a fn=tinyMazeSearch
+
+
+
+
+
+
+
+
+
+
+

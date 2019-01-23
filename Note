@@ -1,0 +1,63 @@
+what is anaconda?
+can swith between python versions...
+package manager
+
+
+conda 
+python 3.7
+
+conda is upper version of pip
+
+source 
+
+
+We have to implement packman game
+
+
+conda cheat sheet:
+https://conda.io/docs/_downloads/conda-cheatsheet.pdf
+
+
+AI resource:
+http://ai.berkeley.edu/tutorial.html
+
+
+for visual :python tutor
+python class
+
+
+search and searchagent e sob kaj
+for 1st only search.py
+
+
+
+http://ai.berkeley.edu/search.html
+
+agent er property
+create action lists
+fn=tinymaze 
+
+
+
+code:
+problem.getSuccessors
+problem.isGoalState
+
+
+
+
+implement 4 function mainly
+
+
+assignment:
+q1,q2,q3,ids
+
+
+
+
+
+
+
+
+
+
