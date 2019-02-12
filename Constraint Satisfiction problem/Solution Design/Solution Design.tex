@@ -1,0 +1,123 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{hyperref} % For hyperlinks in the PDF
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+\linespread{1.05} % Line spacing - Palatino needs more space between lines
+\usepackage{csquotes}
+\usepackage{amsmath}
+\usepackage{enumitem}
+
+\usepackage{commath}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+\title{\textbf{\LARGE Constraint Satisfaction problem (Solution Design)
+}\\
+}
+\author{\IEEEauthorblockN{Md. Musfiqur Rahman}
+\IEEEauthorblockA{{Roll: 05}\\
+}}
+\maketitle
+
+
+\textbf{\textit{Problem Statement-}
+Generate a constraint graph and show a comparison between the performance of AC-1, AC-2, AC-3, AC-4 
+}
+
+
+
+
+\section{Problem definition}
+
+For designing a constraint graph , we can think of a situation where some agents(computer programs or suitable entity are communicating with each other to co-operate or compete with other agents to solve any problem. Here we will consider each node as an agent and the arc or edge between them as constraints which must be considered and satisfied.
+
+
+\section{Constraint specification}
+Constraints in a graph are used to achieve a goal by satisfying  those constraints with allowed values in the domain.Now we will consider some specific constraint which are relatable with the situation mentioned above. If the values in the domain of the adjacent nodes can satisfy these constraint then they will not be reduced from the domain. We describe constraints in the following which will be used in our solution.Here X,Y will be chosen from first and second agent's domain in order. We will assign an id (like following) to each constraint and allocate an id to each edge randomly.
+\\ 
+
+\begin{enumerate}
+\item Agents starts communicating with each other if:
+\begin{equation}
+  distance(X,Y) > gcd(X,Y)
+\end{equation}
+
+\item Agent 1 will send data to agent 2 so that he can transfer data faster if data transfer rate of agent 2 and agent 1 is related by
+\begin{equation}
+    Y=X^2
+\end{equation}
+
+\item  Agent 1 and agent 2 will make a circle of radius 10 or greater with their domain values
+\begin{equation}
+    X^2 + Y^2 >10^2
+\end{equation}
+
+\item Communication between agent 1 and agent 2 will be stable if 
+\begin{equation}
+    Y=X
+\end{equation}
+
+\item Agents co-operate with each other if the following equation has a real number solution. (b,c is from both agents and a=1)
+\begin{equation}
+    ax^2 + b*x + c =0 
+\end{equation}
+
+\item Value of agent 1 and agent 2 will be allowed if:
+\begin{equation}
+    X \oplus  Y  is Odd
+\end{equation}    
+\end{enumerate}
+
+\section{Domain specification}
+
+D is a set of finite domains for the variables of the agents, with D\textsubscript{i} being the domain of variable x\textsubscript{i} of agent\textsubscript{i}. We will generate our domain with two types of randomization:
+\begin{enumerate}[i]
+  \item Randomly choose the size of domain
+  \item Randomly choosing values for domain
+\end{enumerate}
+Then we will assign these domains to random nodes. So that, when running our algorithms many values get reduced in the domain.
+We will mainly consider constraints for values of the domains.So,the  i\textsubscript{th} domain will be more suitable for i\textsubscript{th} constraint(listed before).\\
+\begin{enumerate}[i]
+    \item D1:[50,90,130,200,240,390,...]\\
+    -Considering distance between two agents.
+    \item D2: [1,4,9,16,25,36,...] \\
+    -Perfect square values should occur in the domain.
+    \item D3: [9,10,11,12,13,14,...]\\
+    -Since squared sum have to greater than 100
+    \item D4: [200,220,240,260,280,300,...]\\
+    -Values of both agent have to be same so we choose larger values.
+    \item D5:[5,9,16,20,36,40,45....]\\
+    -Constants of the equation will be taken from this domain of both agents.
+    \item D6:[29,39,49,59,69,79,...]\\
+    -Domain values will  have xor equal to an odd number.
+\end{enumerate}
+
+
+
+\section{Program Execution}
+After we assign domain and constraints in the graph. 
+We will do the following for n=10,,50,100,150,200 nodes
+\begin{enumerate}[label=(\alph*)]
+\item We will run AC-I, AC-II, AC-III, AC-IV algorithms to get individual results and save their run time , number of edges 
+considered in total and reduction percentage.
+
+\item We will do the same for 10-20 times for different graph with same number of nodes for getting the average value.
+\end{enumerate}
+
+
+\section{Result and Observation}
+After our program finished running, we will get a table of data which will indicate individual performance of our algorithms. To get a better visualization we will plot different graphs with number of nodes in X-axis and run time or number of edges considered in total or reduction percentage in Y-axis. We will get 4 lines in same graph each for four different algorithms.
+
+
+\end{document}
