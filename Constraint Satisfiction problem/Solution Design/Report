@@ -1,0 +1,29 @@
+AC4 take most time and AC3 takes least time
+AC3<AC1<AC2<AC4
+problem specific. cz domain and range specific. [1,1000] , 50 domains. also depends on the contraints.
+
+Findings: 
+for node vs time: Node increased time required increases
+
+
+Why AC-3 is Almost Always Better than AC-4 for
+Establishing Arc Consistency in CSPs	
+
+- significantly better than that of the simple strategy of
+scanning all pairs until no inconsistencies are found
+
+
+
+Rene dechter mashrur-
+In the best case AC-1,AC-3 is e.k steps (problem already arc consistent)
+The best of AC-4 remains ek^2  create data structure in the initial phase
+when constraints are loose  t is close to k^2 1,3 may frequently outperforms AC-4
+AC-4 optimal in worst case.
+
+
+
+why reduced with respect to graph density?
+
+for higher edges:
+since more edges more more constraints so after checking some edges no more satisfaction
+but for smaller edges less constraints and more satisfactions

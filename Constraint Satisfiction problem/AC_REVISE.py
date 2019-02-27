@@ -1,3 +1,5 @@
+import copy
+
 from Constraints import isSatisfied
 
 
@@ -6,8 +8,13 @@ def REVISE(Xi,Xj,D,C):
 
     #print("Xi->Xj",Xi,Xj)
     #print("Before->",D[Xi])
-    List1=list.copy(D[Xi])
-    List2=list.copy(D[Xj])
+    # List1=list.copy(D[Xi])
+    # List2=list.copy(D[Xj])
+    List1=copy.deepcopy(D[Xi])
+    List2=copy.deepcopy(D[Xj])
+
+    cntcheck=0
+
     for x in List1:
 
         flag=False
@@ -22,6 +29,7 @@ def REVISE(Xi,Xj,D,C):
 
 
             if(isSatisfied(x,y,cid)):
+                cntcheck+=1
                 #print("Satisfied:",x,y,cid)
                 flag=True
             # else:
@@ -39,4 +47,4 @@ def REVISE(Xi,Xj,D,C):
 
     # if(revised):
         #print("After->",D[Xi])
-    return revised
+    return revised,cntcheck

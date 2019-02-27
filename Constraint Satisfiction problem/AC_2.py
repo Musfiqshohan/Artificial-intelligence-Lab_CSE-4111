@@ -9,21 +9,41 @@ from GraphConstruct import designConstraintGraph
 
 def AC_II(G,D, C):
 
+    cnstcheck = 0
     n= G.number_of_nodes()
-    for i in range(0,n):
+    for i in range(0,n+1):
 
 
         queue1=[]
+        queue2=[]
+
+        # print(G.edges)
         for e in G.edges:
             x,y=e
-            x,y= max(x,y), min(x,y)
-            queue1.append((x,y))
+            # x,y= max(x,y), min(x,y)
 
-        queue2=[]
-        for e in G.edges:
-            x, y = e
-            x,y= min(x,y), max(x,y)
-            queue2.append((x,y))
+            # if(y<x):
+
+            if(y==i):
+                x,y=y,x
+
+            if(x==i and y<i):
+                queue1.append((x, y))
+                queue2.append((y, x))
+
+
+
+
+            # x,y=y,x
+            #
+            # if (y < x):
+            #     queue1.append((x, y))
+            #     queue2.append((y, x))
+
+
+
+
+
 
 
 
@@ -31,41 +51,40 @@ def AC_II(G,D, C):
 
             while(len(queue1)!=0):
 
-
                 edge= queue1.pop(0)
                 k,m=edge
 
-                if(REVISE(k,m,D,C)):
+                d,cntch=REVISE(k,m,D,C)
+                cnstcheck+=cntch
+                if(d):
 
-                    for e in G.edges:
-                        x,y=e
-                        if(x==k and y<=i  and y!=m):
-                            queue2.append((y,x))
-                        elif(y==k and x<=i and x!=m):
-                            queue2.append((x,y))
 
-                if(len(D[k])==0):
-                    return False
+                    neighbours=G.neighbors(k)
+
+                    for p in neighbours:
+
+                        if(p<=i and p!=m):
+                            queue2.append((p,k))
+
+                        # print(e)
+                        # x,y=e
+                        # if(x==k and y<=i  and y!=m):
+                        #     queue2.append((y,x))
+                        # elif(y==k and x<=i and x!=m):
+                        #     queue2.append((x,y))
 
             queue1=queue2
             queue2=[]
 
 
 
-    for i in G.nodes:
-        if(len(D[i])==0):
-            return False
 
-    return True
-
-
-
-
+    return cnstcheck
 
 
 
 
 if __name__ == '__main__':
     G,D,C=designConstraintGraph(10)
-    print(AC_II(G,D,C))
+    AC_II(G,D,C)
     print(D)
